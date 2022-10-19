@@ -1,0 +1,22 @@
+.title {
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 62px;
+    color: #171718;
+
+    max-width: 700px;
+    margin: 160px 0; 
+}
+
+.list{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    row-gap: 50px;
+    column-gap: 30px;
+
+}
+
+.loading {
+    width: 100%;
+    
+}
