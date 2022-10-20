@@ -1,15 +1,16 @@
 import { useEffect, useState } from "react";
 import CardPokemon, { CardPokemonProps } from "../components/CardPokemon";
 import Navbar from "../components/Navbar";
-import "./Home.css";
 import api from "../services/api";
-
+import "./Home.css";
+import { Title, List, Input } from "./Home.styles"
 
 
 // Para mais de uma linha no return da função, colocar parenteses
 function Home() {
     const [isLoading, setIsLoading] = useState(true);
     const [pokemonList, setPokemonList] = useState<CardPokemonProps[]>([]);
+    const [textoBusca, setTextoBusca] = useState("");
 
     
 
@@ -45,20 +46,24 @@ function Home() {
     return (
         <>
             <Navbar />
-            <h1 className="title">Encontre todos os pokemons em um só lugar</h1>
+            <Title className="title">Encontre todos os pokemons em um só lugar</Title>
 
-            <div className="list">
-                {pokemonList.map((pokemon, index) => {
+            <Input type="text" placeholder="Buscar por nome ou id" value={textoBusca} onChange={(event)=> setTextoBusca(event.target.value)} />
+
+            <List>
+                {pokemonList
+                    .filter(pokemon => pokemon.name.includes(textoBusca) || String(pokemon.id) === textoBusca)
+                    .map((pokemon, index) => {
                 return (
                 <CardPokemon 
                     key={index} 
                     id={pokemon.id} 
                     name={pokemon.name} 
                     types={pokemon.types} />
-                )
+                );
             })}
             
-            </div>
+            </List>
         </>
     )
  }
