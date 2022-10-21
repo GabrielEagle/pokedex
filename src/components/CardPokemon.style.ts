@@ -86,4 +86,10 @@ export const Image = styled.img`
     position: absolute;
     top: -40px;
     right: 10px; 
+
+  @media only screen and (max-width: 400px) {
+        max-height: 110px;
+        top: -20px;
+        right: -5px;
+    }
 `;

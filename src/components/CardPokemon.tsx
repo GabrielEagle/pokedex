@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"
 import Badge from "./Badge";
-import * as S from "./Card.style"
+import * as S from "./CardPokemon.style"
 
 type PokemonTypeProps = {
     type: {
