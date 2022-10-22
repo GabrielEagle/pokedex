@@ -1,17 +1,34 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { add, remove } from "../redux/favoriteSlice";
+import { StoreState } from "../redux";
+
 import Navbar from "../components/Navbar";
 import Badge from "../components/Badge";
 import api from "../services/api";
+
 import { CardPokemonProps } from "../components/CardPokemon";
-import { Container, Image, Card, Number, Title } from "./Details.style";
+import { Container, Image, Card, Number, Title, Button } from "./Details.style";
 
 
 
 function Details(){
     const { id } = useParams();
+    const dispatch = useDispatch();
+    const favoriteList = useSelector((state: StoreState) => state.favorite);
     const [isLoading, setIsLoading] = useState(true);
-    const [pokemonData, setPokemonData] = useState<CardPokemonProps>({} as CardPokemonProps);
+    const [pokemonData, setPokemonData] = useState<CardPokemonProps>({} as CardPokemonProps
+);
+
+function handleClickAdd() {
+   dispatch(add(id));
+}
+
+function handleClickRemove() {
+   dispatch(remove(id));
+}
+
 
     async function getPokemonData() {
       const { data } = await api.get("/pokemon/" + id);
@@ -49,6 +66,13 @@ function Details(){
         {pokemonData.types.map((item, index) => {
             return <Badge key={index} name={item.type.name} />
         })}
+ 
+        {!!favoriteList.find(pokemonId => String(pokemonId) === String(id)
+        )? (
+        <Button onClick={handleClickRemove}>❌Remover dos Favoritos❌</Button>
+        ) : (
+        <Button onClick={handleClickAdd}>⭐Adicionar aos Favoritos⭐</Button>
+        )}
          </Card>
 
          </Container>

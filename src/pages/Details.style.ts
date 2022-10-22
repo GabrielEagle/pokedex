@@ -102,3 +102,8 @@ export const Title = styled.h1`
     line-height: 83px;
     color: #ffffff;
 `;
+
+export const Button = styled.button`
+  padding: 0.35rem 1rem;
+
+`;
