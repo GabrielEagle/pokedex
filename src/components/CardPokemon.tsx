@@ -11,7 +11,7 @@ type PokemonTypeProps = {
 export type CardPokemonProps= {
     id: number;
     name: string;
-    types: PokemonTypeProps[]
+    types: PokemonTypeProps[];
 };
 
 function CardPokemon(props: CardPokemonProps) {

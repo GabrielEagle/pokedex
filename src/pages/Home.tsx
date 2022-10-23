@@ -1,9 +1,12 @@
 import { useEffect, useState } from "react";
+import { Input } from "./Home.styles"
 import CardPokemon, { CardPokemonProps } from "../components/CardPokemon";
+import { List }  from "../components/List.style";
+
 import Navbar from "../components/Navbar";
+import Title from "../components/Title";
 import api from "../services/api";
 import "./Home.css";
-import { Title, List, Input } from "./Home.styles"
 
 
 // Para mais de uma linha no return da função, colocar parenteses
@@ -40,15 +43,15 @@ function Home() {
      }, [ ])
 
      if(isLoading) {
-        return <img src="https://64.media.tumblr.com/02f03c1a168ba59bd5ba82395a27be01/tumblr_oaldzpLZhl1ux1dn3o1_500.gif" className="loading"/>;
+        return <img src="https://i.pinimg.com/originals/8a/4a/72/8a4a7213b43f4ec4f99db406be655f9e.gif" className="loading"/>;
      }
 
     return (
         <>
             <Navbar />
-            <Title className="title">Encontre todos os pokemons em um só lugar</Title>
+            <Title text="Find all pokemons in one place" />
 
-            <Input type="text" placeholder="Buscar por nome ou id" value={textoBusca} onChange={(event)=> setTextoBusca(event.target.value)} />
+            <Input type="text" placeholder="Find Pokemon by name or ID" value={textoBusca} onChange={(event)=> setTextoBusca(event.target.value)} />
 
             <List>
                 {pokemonList

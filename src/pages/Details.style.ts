@@ -2,17 +2,42 @@ import styled from "styled-components";
 
 export const Container = styled.div`
     height: calc(100vh - 4rem - 40px);
+    /* display: grid;
+    grid-template-columns: repeat(2, 1fr); */
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem 0;
+
+    @media only screen and (max-width: 1000px) {
+      height: 100%;
+      flex-direction: column;
+    }
 
 `;
 
-export const Image = styled.img``;
+export const Image = styled.img`
+ width: 100%;
+
+ @media only screen and (max-width: 900px) {
+      max-width: 300px;
+    }
+`;
 
 export const Card = styled.div`
+    width: 100%;
+
     background: #8bbe8a;
     border: 4px solid #62b957;
     box-shadow: 0px 4px 4px rgba(0,0,0,0.25);
     border-radius: 20px;
     padding: 50px;
+
+    @media only screen and (max-width: 600px) {
+      padding: 1rem;
+
+    }
 
 &.type--bug {
   background-color: #8bd674;
@@ -101,9 +126,66 @@ export const Title = styled.h1`
     font-size: 64px;
     line-height: 83px;
     color: #ffffff;
+
+    @media only screen and (max-width: 600px) {
+      font-size: 2.5rem;
+      line-height: 83px;
+    }
+`;
+
+export const ButtonMobile = styled.button`
+    display: none;
+
+    width: 40px;
+    height: 40px;
+
+    padding: 0.5rem 1rem;
+    border-radius: 50%;
+    margin-top: 12px;
+    background-color: white;
+    font-weight: 900px;
+    font-size: 24px;
+    color: rgba(23, 23, 27, 0.6);
+    
+      @media only screen and (max-width: 600px) {
+        display: flex; 
+        align-items: center;
+        justify-content: center;
+        font-size: 18px;
+      }
 `;
 
 export const Button = styled.button`
   padding: 0.35rem 1rem;
+  border-radius: 8px;
+  margin-top: 12px;
+  background-color: white;
+  font-weight: 900px;
+  font-size: 24px;
+  color: rgba(23, 23, 27, 0.6);
+
+  @media only screen and (max-width: 600px) {
+      /* font-size: 2.5rem;
+      line-height: 83px; */
+      display: none;
+    }
+
+`;
+
+export const Label = styled.span`
+  margin-top: 12px;
+  display: block;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 31px;
+  color: rgba(23, 23, 27, 0.6);
+
+`;
+
+export const Value = styled.p`
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 47px;
+  color: #ffffff;
 
 `;

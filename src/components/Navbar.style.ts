@@ -14,16 +14,16 @@ export const Nav = styled.nav`
 }
 `;
 
-// type CustomLinkProps = {
-//     fontSize: number;
-//     lineHeight: number;
-//     color: string; 
-// }
+type CustomLinkProps = {
+    fontSize?: number;
+    lineHeight?: number;
+    color?: string; 
+}
 
-// export const CustomLink = styled(Link)<CustomLinkProps>`
-//     font-weight: 400;
-//     font-size: ${(props) => props.fontSize}px;
-// `;
+export const CustomLink = styled(Link)<CustomLinkProps>`
+    font-weight: 400;
+    font-size: ${(props) => props.fontSize}px;
+`;
 
 
 export const BtnGoBack = styled(Link)`

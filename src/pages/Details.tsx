@@ -9,75 +9,106 @@ import Badge from "../components/Badge";
 import api from "../services/api";
 
 import { CardPokemonProps } from "../components/CardPokemon";
-import { Container, Image, Card, Number, Title, Button } from "./Details.style";
 
-
-
-function Details(){
-    const { id } = useParams();
-    const dispatch = useDispatch();
-    const favoriteList = useSelector((state: StoreState) => state.favorite);
-    const [isLoading, setIsLoading] = useState(true);
-    const [pokemonData, setPokemonData] = useState<CardPokemonProps>({} as CardPokemonProps
-);
-
-function handleClickAdd() {
-   dispatch(add(id));
+import {
+Container,
+Image,
+Card,
+Number,
+Title,
+Button,
+Label,
+Value,
+ButtonMobile,
 }
 
-function handleClickRemove() {
-   dispatch(remove(id));
+   from "./Details.style";
+
+type DetailsProps = CardPokemonProps & {
+   height: number;
+   weight: number;
 }
 
+function Details() {
+   const { id } = useParams();
+   const dispatch = useDispatch();
+   const favoriteList = useSelector((state: StoreState) => state.favorite);
+   const [isLoading, setIsLoading] = useState(true);
+   const [pokemonData, setPokemonData] = useState<DetailsProps>({} as DetailsProps
+   );
 
-    async function getPokemonData() {
+   function handleClickAdd() {
+      dispatch(add(id));
+   }
+
+   function handleClickRemove() {
+      dispatch(remove(id));
+   }
+
+
+   async function getPokemonData() {
       const { data } = await api.get("/pokemon/" + id);
-         setPokemonData ({
-             id: data.id,
-             name: data.name,
-             types: data.types,
-     });
-     setIsLoading(false);
-    }
+      setPokemonData({
+         id: data.id,
+         name: data.name,
+         types: data.types,
+         height: data.height / 10,
+         weight: data.weight / 10,
+      });
+      setIsLoading(false);
+   }
 
-    useEffect (() => {
+   useEffect(() => {
       getPokemonData();
-   }, [ ]);
+   }, []);
 
-   if(isLoading) {
+   if (isLoading) {
       return <p>Loading....</p>;
    }
 
-    return (
- <>
-    <Navbar hasGoBack />
+   return (
+      <>
+         <Navbar hasGoBack />
          <Container>
 
-    {/* <h1>{pokemons.find((pokemon) => String(pokemon.id) == id)?.name}</h1> */}
+            {/* <h1>{pokemons.find((pokemon) => String(pokemon.id) == id)?.name}</h1> */}
 
-         <Image
-            src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`} 
-            alt={pokemonData.name} 
+            <Image
+               src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`}
+               alt={pokemonData.name}
             />
 
-         <Card className={`type--${pokemonData.types[0].type.name.toLowerCase()}`}>
-         <Number>#{String(id).padStart(3, "0")}</Number>
-        <Title>{pokemonData.name}</Title>
-        {pokemonData.types.map((item, index) => {
-            return <Badge key={index} name={item.type.name} />
-        })}
- 
-        {!!favoriteList.find(pokemonId => String(pokemonId) === String(id)
-        )? (
-        <Button onClick={handleClickRemove}>❌Remover dos Favoritos❌</Button>
-        ) : (
-        <Button onClick={handleClickAdd}>⭐Adicionar aos Favoritos⭐</Button>
-        )}
-         </Card>
+            <Card className={`type--${pokemonData.types[0].type.name.toLowerCase()}`}>
+               <Number>#{String(id).padStart(3, "0")}</Number>
+               <Title>{pokemonData.name}</Title>
+               {pokemonData.types.map((item, index) => {
+                  return <Badge key={index} name={item.type.name} />
+               })}
+
+               <Label>Weight</Label>
+               <Value>{pokemonData.weight} Kg</Value>
+
+               <Label>Height</Label>
+               <Value>{pokemonData.height} m</Value>
+
+               {!!favoriteList.find(pokemonId => String(pokemonId) === String(id)
+               ) ? (
+                  <>
+                     <Button onClick={handleClickRemove}>❌Remove Favorite❌</Button>
+                     <ButtonMobile onClick={handleClickRemove}>❌</ButtonMobile>
+                  </>
+               ) : (
+                  <>
+                     <Button onClick={handleClickAdd}>⭐Add to favorites⭐</Button>
+                     <ButtonMobile onClick={handleClickAdd}>⭐</ButtonMobile>
+                  </>
+               )}
+
+            </Card>
 
          </Container>
- </>
-    );
+      </>
+   );
 }
 
 export default Details;
