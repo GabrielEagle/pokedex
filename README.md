@@ -4,12 +4,24 @@ Pokedex is a visual and functional page developed through typescript and react, 
 
 Loading screen:
 
-![image](https://user-images.githubusercontent.com/109248116/196744148-053b4aa3-a40c-444a-bf11-da328302513b.png)
+![image](https://user-images.githubusercontent.com/109248116/198070936-a8cf996a-d82a-4209-9159-390df7dd19e0.png)
+
 
 Navbar:
 
-![image](https://user-images.githubusercontent.com/109248116/196744251-57691fe5-7eee-4ec0-976d-506cb44255b9.png)
+![image](https://user-images.githubusercontent.com/109248116/198071135-45fcc9b9-db94-4d4d-808f-fc1cd04fe6c3.png)
 
-Page(+10.000 pokemons returned by API): 
 
-![image](https://user-images.githubusercontent.com/109248116/196744389-78e85a23-4f24-449d-b7f6-c9b1acf702ef.png)
+HomePage(+10.000 pokemons returned by API): 
+
+![image](https://user-images.githubusercontent.com/109248116/198071230-07f6469d-4029-4afe-99a3-5dee63adda77.png)
+
+
+Details Page
+
+![image](https://user-images.githubusercontent.com/109248116/198071327-1d2b88a4-afb6-40dc-8c1b-27db8a7eaa9e.png)
+
+
+Favorites Page
+
+![image](https://user-images.githubusercontent.com/109248116/198071375-5ce9c917-8f02-4db8-b23c-848ada1eb7c6.png)
