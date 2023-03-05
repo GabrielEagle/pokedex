@@ -25,3 +25,5 @@ Details Page
 Favorites Page
 
 ![image](https://user-images.githubusercontent.com/109248116/198071375-5ce9c917-8f02-4db8-b23c-848ada1eb7c6.png)
+
+🔗 [Link](https://pokedex-sk.vercel.app/)
